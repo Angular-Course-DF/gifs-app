@@ -4,7 +4,7 @@
   <div class="flex flex-col relative w-screen">
     <div
       id="menu"
-      class="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 fixed left-0 h-screen overflow-y-scroll"
+      class="w-[220px] bg-gray-900 min-h-screen z-10 text-slate-300 fixed left-0 h-screen overflow-y-scroll"
     >
       <div id="logo" class="my-4 px-6">
         <h1 class="text-lg md:text-2xl font-bold text-white">
@@ -230,6 +230,12 @@
           </div>
         </a>
       </div>
+    </div>
+
+    <div
+      class="ml-[220px] px-4 flex flex-col flex-1 w-full h-full text-slate-800"
+    >
+      <router-outlet />
     </div>
   </div>
 </div>
