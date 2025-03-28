@@ -3,6 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '@environments/environment';
 import type { GiphyResponse } from '../interfaces/giphy.interface';
 import { Gif } from '../interfaces/gif.interface';
+import { GifMapper } from '../mappers/gif.mapper';
 
 @Injectable({ providedIn: 'root' })
 export class GifService {
@@ -19,7 +20,9 @@ export class GifService {
         params: { api_key: environment.giphyAPiKey },
       })
       .subscribe((response) => {
-        console.log('Trending Gifs:', response.data);
+        const gifs = GifMapper.mapGiphyItemsToGifArray(response.data);
+        console.log('Trending Gifs:', gifs);
+        this.trenfingGifs.set(gifs);
       });
   }
 }
