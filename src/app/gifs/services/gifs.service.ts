@@ -27,4 +27,20 @@ export class GifService {
         this.trenfingGifsLoading.set(false);
       });
   }
+
+  searchGifs(query: string) {
+    this.http
+      .get<GiphyResponse>(`${environment.giphyBaseUrl}/gifs/search`, {
+        params: {
+          api_key: environment.giphyAPiKey,
+          limit: 20,
+          q: query,
+        },
+      })
+      .subscribe((response) => {
+        const gifs = GifMapper.mapGiphyItemsToGifArray(response.data);
+
+        console.log('Search Gifs:', gifs);
+      });
+  }
 }
